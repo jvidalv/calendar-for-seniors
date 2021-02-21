@@ -14,13 +14,13 @@ module.exports = {
     'react-native/no-raw-text': 'off',
   },
   settings: {
-    'import/extensions': ['.js', '.ts', '.tsx'],
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
     'import/resolver': {
       node: {
-        extensions: ['.js', '.ts', '.tsx'],
+        paths: ['src'],
+      },
+      alias: {
+        map: [['app', './src']],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
       },
     },
   },
