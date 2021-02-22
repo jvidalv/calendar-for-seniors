@@ -2,6 +2,9 @@ module.exports = {
   root: true,
   extends: ['@callstack'],
   plugins: ['react-native'],
+  env: {
+    'jest/globals': true,
+  },
   rules: {
     'one-var': 'off',
     'no-multi-assign': 'off',
