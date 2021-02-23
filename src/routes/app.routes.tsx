@@ -7,23 +7,19 @@ const Drawer = createDrawerNavigator();
 
 const Stack = createStackNavigator();
 
+const CalendarRoutes = () => (
+  <Stack.Navigator
+    initialRouteName="Calendar.Monthly"
+    screenOptions={{ headerShown: false }}
+  >
+    <Drawer.Screen name="Calendar.Monthly" component={CalendarMonthlyScreen} />
+  </Stack.Navigator>
+);
+
 export const AppRoutes = () => {
   return (
     <Drawer.Navigator initialRouteName="Calendar">
-      <Drawer.Screen
-        name="Calendar"
-        component={() => (
-          <Stack.Navigator
-            initialRouteName="Calendar.Monthly"
-            screenOptions={{ headerShown: false }}
-          >
-            <Drawer.Screen
-              name="Calendar.Monthly"
-              component={CalendarMonthlyScreen}
-            />
-          </Stack.Navigator>
-        )}
-      />
+      <Drawer.Screen name="Calendar" component={CalendarRoutes} />
     </Drawer.Navigator>
   );
 };
