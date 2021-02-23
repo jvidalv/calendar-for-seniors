@@ -8,9 +8,8 @@ target 'calendarForSeniors' do
 
   use_react_native!(:path => config["reactNativePath"])
 
-  pod 'RNLocalize', :path => '../node_modules/react-native-localize'
 
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
 
   target 'calendarForSeniorsTests' do
     inherit! :complete

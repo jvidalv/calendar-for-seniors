@@ -2,16 +2,18 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { useAppSelector } from 'app/store/app.hooks';
 import { Button } from 'react-native-paper';
+import { t } from 'i18n-js';
 
-import styles from './calendar.styles';
+import styles from './calendar-monthly.screen.styles';
 
-export const Calendar = () => {
+export const CalendarMonthlyScreen = () => {
   const { lang, timezone } = useAppSelector(state => state.user);
   return (
     <View style={styles.calendar}>
       <Text style={styles.title}>Calendar For Seniors</Text>
       <Text>Lang : {lang}</Text>
       <Text>TimeZone : {timezone}</Text>
+      <Text>{t('test')}</Text>
       <Button
         loading
         icon="camera"

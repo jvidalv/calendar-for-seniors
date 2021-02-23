@@ -1,22 +1,26 @@
 import React from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from 'app/store/app.store';
-import { Calendar } from 'app/screens/calendar';
 import { Provider as PaperProvider } from 'react-native-paper';
+import { NavigationContainer } from '@react-navigation/native';
+import { AppRoutes } from 'app/routes/app.routes';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 declare const global: { HermesInternal: null | {} };
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <PaperProvider>
-        <StatusBar barStyle="dark-content" />
-        <SafeAreaView>
-          <Calendar />
-        </SafeAreaView>
-      </PaperProvider>
-    </Provider>
+    <SafeAreaProvider>
+      <Provider store={store}>
+        <PaperProvider>
+          <NavigationContainer>
+            <StatusBar barStyle="dark-content" />
+            <AppRoutes />
+          </NavigationContainer>
+        </PaperProvider>
+      </Provider>
+    </SafeAreaProvider>
   );
 };
 
