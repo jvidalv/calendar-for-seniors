@@ -1,6 +1,6 @@
 import { tw } from 'app/utils/tailwind';
 
 export default {
-  calendar: tw('flex-1 bg-gray-200'),
-  calendarCard: tw('border-t border-gray-300 rounded-3xl'),
+  calendarHeader: tw('h-32'),
+  calendarCard: tw('rounded-3xl'),
 };

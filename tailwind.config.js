@@ -1,6 +1,8 @@
 module.exports = {
   darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {},
+    },
   },
 };
