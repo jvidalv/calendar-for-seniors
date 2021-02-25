@@ -7,7 +7,11 @@ const { tailwind, getColor } = create({ ...styles, ...customStyles });
 const tw = (classes: string, log: boolean = false) => {
   const ss = tailwind(classes);
   if (__DEV__ && log) {
-    console.log(ss);
+    console.info(
+      JSON.stringify(ss)
+        .split(/[,{}]/)
+        .join('\n')
+    );
   }
   return ss;
 };
