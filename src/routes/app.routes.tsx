@@ -1,6 +1,6 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { CalendarMonthlyScreen } from 'app/domains/calendar/calendar-monthly.screen';
+import { CalendarMonthlyScreen } from 'app/domains/calendar/calendar-monthly/calendar-monthly.screen';
 import { createStackNavigator } from '@react-navigation/stack';
 import CalendarAppbar from 'app/domains/calendar/calendar.appbar';
 import { CalendarScreen } from 'app/domains/calendar/calendar.screen';

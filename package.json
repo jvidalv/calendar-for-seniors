@@ -11,7 +11,8 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "postinstall": "husky install",
-    "tailwind": "create-tailwind-rn && mv ./styles.json ./src/utils/tailwind/tailwind.styles.json"
+    "tailwind": "create-tailwind-rn && mv ./styles.json ./src/utils/tailwind/tailwind.styles.json",
+    "debug": "open \"rndebugger://set-debugger-loc?host=localhost&port=8081\""
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
@@ -45,6 +46,7 @@
     "@types/react-native-vector-icons": "^6.4.6",
     "@types/react-redux": "^7.1.16",
     "@types/react-test-renderer": "^16.9.2",
+    "@types/redux-logger": "^3.0.8",
     "@typescript-eslint/eslint-plugin": "^2.12.0",
     "@typescript-eslint/parser": "^2.12.0",
     "babel-jest": "^25.1.0",
