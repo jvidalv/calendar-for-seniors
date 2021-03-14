@@ -7,15 +7,15 @@ import {
   getWeekDays,
   INDEX_CURRENT_MONTH,
   MONTH_UI_HEIGHT,
-} from 'app/domains/calendar/calendar-monthly/calendar-monthly.model';
-import { ICalendarMonth } from 'app/domains/calendar/calendar-monthly/calendar-monthly.types';
+} from 'app/domains/calendar/month/month.model';
+import { ICalendarMonth } from 'app/domains/calendar/month/month.types';
 import { setActiveMonths } from 'app/domains/calendar/store/calendar.slice';
 import format from 'app/utils/date-fns/format';
-import { CalendarMonthlyMonth } from 'app/domains/calendar/calendar-monthly/components/calendar-monthly.month';
+import { Month } from 'app/domains/calendar/month/components/month';
 
-import styles from './calendar-monthly.screen.styles';
+import styles from './month.screen.styles';
 
-export const CalendarMonthlyScreen = () => {
+export const MonthScreen = () => {
   const daysForHeader = useMemo(() => getWeekDays(), []);
   const dispatch = useAppDispatch();
 
@@ -60,7 +60,7 @@ export const CalendarMonthlyScreen = () => {
           offset: MONTH_UI_HEIGHT * index - 10,
           index,
         })}
-        renderItem={props => <CalendarMonthlyMonth month={props.item} />}
+        renderItem={props => <Month month={props.item} />}
         initialNumToRender={6}
         initialScrollIndex={INDEX_CURRENT_MONTH}
         keyExtractor={(_, i) => `${i}`}

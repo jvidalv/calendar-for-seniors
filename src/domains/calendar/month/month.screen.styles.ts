@@ -1,7 +1,7 @@
 import { tw } from 'app/utils/tailwind';
 
 export default {
-  calendar: tw('flex flex-1 border border-gray-200 p-4'),
+  calendar: tw('flex flex-1 border border-gray-200 p-4 rounded-3xl'),
   title: tw('text-xl text-purple-500'),
   button: tw('mt-2'),
 

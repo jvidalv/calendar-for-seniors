@@ -2,12 +2,13 @@ import { addDays, startOfWeek } from 'date-fns';
 import format from 'app/utils/date-fns/format';
 import {
   firstDayOfTheMonthAsDate,
+  isToday,
   lastDayOfTheMonth,
 } from 'app/utils/date-fns/utils';
 import {
   ICalendarDay,
   ICalendarMonth,
-} from 'app/domains/calendar/calendar-monthly/calendar-monthly.types';
+} from 'app/domains/calendar/month/month.types';
 
 const NUMBER_OF_MONTHS = 112;
 export const INDEX_CURRENT_MONTH = NUMBER_OF_MONTHS / 2;
@@ -32,14 +33,15 @@ const getDaysForMonth = (monthFromToday: number): ICalendarDay[] => {
       Number.parseInt(lastDayOfTheMonth(monthFromToday, 'd')) + firstDayAsNumber
     )
   ).map((e, i) => {
-    const date = addDays(firstDayAsDate, i - firstDayAsNumber).toString();
+    const date = addDays(firstDayAsDate, i - firstDayAsNumber);
     const dayNumber = Number.parseInt(
       format(addDays(firstDayAsDate, i - firstDayAsNumber), 'd')
     );
 
     return {
       display: i >= 10 || dayNumber <= 10,
-      date,
+      isToday: isToday(date),
+      date: date.toString(),
       dayNumber,
     };
   });

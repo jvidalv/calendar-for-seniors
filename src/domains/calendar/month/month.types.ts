@@ -2,6 +2,7 @@ export type ICalendarDay = {
   date: string;
   dayNumber: number;
   display: boolean;
+  isToday: boolean;
 };
 
 export type ICalendarMonth = {

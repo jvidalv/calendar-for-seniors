@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  monthlyInitialState,
+  monthInitialState,
   sam,
-  CalendarMonthlyActions,
-} from 'app/domains/calendar/store/calendar-monthly.actions';
+  CalendarMonthActions,
+} from 'app/domains/calendar/store/calendar.month.actions';
 
 export interface CalendarState {
-  monthly: CalendarMonthlyActions;
+  month: CalendarMonthActions;
 }
 
 const initialState: CalendarState = {
-  monthly: { ...monthlyInitialState },
+  month: { ...monthInitialState },
 };
 
 export const calendarSlice = createSlice({

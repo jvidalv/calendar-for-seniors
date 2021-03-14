@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useAppSelector } from 'app/store/hooks.store';
 
 import styles from './calendar.appbar.styles';
-import { useAppSelector } from 'app/store/hooks.store';
 
 const HeaderBackground = () => <View />;
 
@@ -16,7 +16,7 @@ const HeaderRight = () => (
 );
 
 const HeaderCenter = () => {
-  const { year, month } = useAppSelector(s => s.calendar.monthly.currentMonth);
+  const { year, month } = useAppSelector(s => s.calendar.month.currentMonth);
   return (
     <View style={styles.center}>
       <Text style={styles.title}>{month}</Text>

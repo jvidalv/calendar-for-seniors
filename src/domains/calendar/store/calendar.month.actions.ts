@@ -1,8 +1,8 @@
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 import { CalendarState } from 'app/domains/calendar/store/calendar.slice';
 import format from 'app/utils/date-fns/format';
-import { ICalendarMonth } from 'app/domains/calendar/calendar-monthly/calendar-monthly.types';
-import { INDEX_CURRENT_MONTH } from 'app/domains/calendar/calendar-monthly/calendar-monthly.model';
+import { ICalendarMonth } from 'app/domains/calendar/month/month.types';
+import { INDEX_CURRENT_MONTH } from 'app/domains/calendar/month/month.model';
 import { firstDayOfTheMonthAsDate } from 'app/utils/date-fns/utils';
 
 interface ICurrentMonth extends Partial<ICalendarMonth> {
@@ -10,7 +10,7 @@ interface ICurrentMonth extends Partial<ICalendarMonth> {
   year: string;
 }
 
-export interface CalendarMonthlyActions {
+export interface CalendarMonthActions {
   currentMonth: ICurrentMonth;
   visibleMonths: Partial<ICalendarMonth>[];
 }
@@ -23,7 +23,7 @@ const initialMonth: ICurrentMonth = {
   year: format(Date.now(), 'y'),
 };
 
-export const monthlyInitialState: CalendarMonthlyActions = {
+export const monthInitialState: CalendarMonthActions = {
   currentMonth: initialMonth,
   visibleMonths: [initialMonth],
 };
@@ -37,7 +37,7 @@ export const sam: CaseReducer<
   }>
 > = (s, action) => ({
   ...s,
-  monthly: {
+  month: {
     currentMonth: action.payload.currentMonth,
     visibleMonths: action.payload.visibleMonths,
   },

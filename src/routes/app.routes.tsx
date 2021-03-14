@@ -1,22 +1,38 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { CalendarMonthlyScreen } from 'app/domains/calendar/calendar-monthly/calendar-monthly.screen';
+import { MonthScreen } from 'app/domains/calendar/month/month.screen';
 import { createStackNavigator } from '@react-navigation/stack';
 import CalendarAppbar from 'app/domains/calendar/calendar.appbar';
-import { CalendarScreen } from 'app/domains/calendar/calendar.screen';
 
 import styles from './app.routes.styles';
+import { CalendarScreen } from 'app/domains/calendar/calendar.screen';
+import { EventScreen } from 'app/domains/calendar/event/event.screen';
 
-const Drawer = createDrawerNavigator();
+const EventsStack = createStackNavigator();
 
-const Stack = createStackNavigator();
+const EventsRoutes = () => (
+  <EventsStack.Navigator
+    initialRouteName="Event.New"
+    screenOptions={{
+      headerShown: false,
+      cardStyle: {
+        backgroundColor: 'transparent',
+      },
+      cardOverlayEnabled: false,
+    }}
+  >
+    <EventsStack.Screen name="Event.New" component={EventScreen} />
+  </EventsStack.Navigator>
+);
+
+const CalendarMonthlyStack = createStackNavigator();
 
 const CalendarRoutes = () => (
   <CalendarScreen>
-    <Stack.Navigator
+    <CalendarMonthlyStack.Navigator
+      mode="modal"
       initialRouteName="Calendar.Monthly"
       screenOptions={{
-        cardStyle: styles.calendarCard,
         headerTitleAlign: 'center',
         headerLeft: CalendarAppbar.HeaderLeft,
         headerRight: CalendarAppbar.HeaderRight,
@@ -25,18 +41,39 @@ const CalendarRoutes = () => (
         headerStyle: styles.calendarHeader,
       }}
     >
-      <Drawer.Screen
+      <CalendarMonthlyStack.Screen
         name="Calendar.Monthly"
-        component={CalendarMonthlyScreen}
+        component={MonthScreen}
       />
-    </Stack.Navigator>
+    </CalendarMonthlyStack.Navigator>
   </CalendarScreen>
 );
 
+const CalendarStack = createStackNavigator();
+
+const CalendarRoutes2 = () => (
+  <CalendarStack.Navigator
+    initialRouteName="Calendar"
+    mode="modal"
+    screenOptions={{ headerShown: false }}
+  >
+    <CalendarStack.Screen name="Calendar" component={CalendarRoutes} />
+    <CalendarStack.Screen
+      name="Event"
+      component={EventsRoutes}
+      options={{
+        cardStyle: { marginTop: '20%' },
+      }}
+    />
+  </CalendarStack.Navigator>
+);
+
+const AppDrawer = createDrawerNavigator();
+
 export const AppRoutes = () => {
   return (
-    <Drawer.Navigator initialRouteName="Calendar">
-      <Drawer.Screen name="Calendar" component={CalendarRoutes} />
-    </Drawer.Navigator>
+    <AppDrawer.Navigator initialRouteName="Calendar">
+      <AppDrawer.Screen name="Calendar" component={CalendarRoutes2} />
+    </AppDrawer.Navigator>
   );
 };
